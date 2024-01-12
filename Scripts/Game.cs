@@ -22,5 +22,11 @@ public partial class Game : Node
                 viewportRect.Size.Y * 0.65
             )
         );
+
+        wall.BirdPassWall += () =>
+        {
+            // TODO Update score
+            GD.Print("Update score");
+        };
     }
 }

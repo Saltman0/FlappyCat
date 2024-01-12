@@ -15,3 +15,4 @@
 /home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.pdb
 /home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.genruntimeconfig.cache
 /home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ref/ScrollNeon.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.sourcelink.json

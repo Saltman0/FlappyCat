@@ -16,12 +16,10 @@ public partial class Wall : Node2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Position = new Vector2(Position.X - _speed * (float)delta, Position.Y);
-		GD.Print(Position);
 	}
 
 	public void OnScoreAreaBodyExited(Player player)
 	{
-		GD.Print("Exited");
 		EmitSignal(SignalName.BirdPassWall);
 	}
 }

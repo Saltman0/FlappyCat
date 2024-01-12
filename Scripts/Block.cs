@@ -19,6 +19,5 @@ public partial class Block : Area2D
 	public void OnBodyEntered(Player player)
 	{
 		EmitSignal(SignalName.BirdCrashed);
-		GD.Print("PLayer crashed");
 	}
 }
