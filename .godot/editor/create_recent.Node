@@ -1,0 +1,15 @@
+VisibleOnScreenNotifier2D
+Label
+Container
+Sprite2D
+ParallaxBackground
+ParallaxLayer
+Camera2D
+Timer
+CollisionShape2D
+Area2D
+Node
+TileMap
+Polygon2D
+StaticBody2D
+CharacterBody2D

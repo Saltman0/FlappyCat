@@ -1,0 +1,17 @@
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/ScrollNeon.deps.json
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/ScrollNeon.runtimeconfig.json
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/ScrollNeon.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/ScrollNeon.pdb
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.csproj.AssemblyReference.cache
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.GeneratedMSBuildEditorConfig.editorconfig
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.AssemblyInfoInputs.cache
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.AssemblyInfo.cs
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.csproj.CoreCompileInputs.cache
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.csproj.CopyComplete
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/refint/ScrollNeon.dll
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.pdb
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ScrollNeon.genruntimeconfig.cache
+/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/Debug/ref/ScrollNeon.dll
