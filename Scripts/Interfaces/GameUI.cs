@@ -12,4 +12,14 @@ public partial class GameUI : Control
 	public override void _PhysicsProcess(double delta)
 	{
 	}
+
+	public void UpdateScore(int score)
+	{
+		GetNode<Label>("ScoreLabel").Text = score.ToString();
+	}
+
+	public void UpdateGameOver()
+	{
+		GetNode<Label>("GameOverLabel").Visible = true;
+	}
 }

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ScrollNeon"
+run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -34,4 +35,4 @@ jump={
 
 [physics]
 
-2d/default_gravity=1500.0
+2d/default_gravity=30.0

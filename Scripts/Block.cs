@@ -1,11 +1,7 @@
 using Godot;
-using System;
 
 public partial class Block : Area2D
 {
-	[Signal]
-	public delegate void BirdCrashedEventHandler();
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,6 +14,6 @@ public partial class Block : Area2D
 
 	public void OnBodyEntered(Player player)
 	{
-		EmitSignal(SignalName.BirdCrashed);
+		player.Crash();
 	}
 }

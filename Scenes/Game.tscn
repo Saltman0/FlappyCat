@@ -15,10 +15,16 @@ texture = ExtResource("4_ry1pq")
 
 [node name="Player" parent="." instance=ExtResource("1_jar3l")]
 position = Vector2(33, 407)
+metadata/_edit_lock_ = true
 
 [node name="WallSpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="GameUI" parent="." instance=ExtResource("5_qf735")]
+[node name="Walls" type="Node2D" parent="."]
 
+[node name="GameUI" parent="." instance=ExtResource("5_qf735")]
+metadata/_edit_lock_ = true
+
+[connection signal="Crashed" from="Player" to="." method="OnPlayerCrashed"]
+[connection signal="Passed" from="Player" to="." method="OnPlayerPassed"]
 [connection signal="timeout" from="WallSpawnTimer" to="." method="OnWallSpawnTimerTimeout"]
