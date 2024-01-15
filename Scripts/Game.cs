@@ -3,9 +3,17 @@ using System;
 
 public partial class Game : Node
 {
+	private bool _isGameOver;
+	
 	private int _score;
 
 	private Node2D _walls;
+
+	public bool IsGameOver
+	{
+		get => _isGameOver;
+		set => _isGameOver = value;
+	}
 
 	public int Score
 	{
@@ -20,6 +28,14 @@ public partial class Game : Node
 	public override void _Ready()
 	{
 		_walls = GetNode<Node2D>("Walls");
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (Input.IsActionJustPressed("pause"))
+		{
+			
+		}
 	}
 	
 	public void OnWallSpawnTimerTimeout()
@@ -40,12 +56,15 @@ public partial class Game : Node
 
 	public void OnPlayerPassed()
 	{
-		Score++;
+		if (!IsGameOver)
+		{
+			Score++;
+		}
 	}
 	
 	public void OnPlayerCrashed()
 	{
-		GetNode<GameUI>("GameUI").UpdateGameOver();
-		
+		IsGameOver = true;
+		GetNode<GameUI>("GameUI").GameOver();
 	}
 }

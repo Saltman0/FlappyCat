@@ -12,7 +12,7 @@ public partial class Player : CharacterBody2D
 	[Signal]
 	public delegate void CrashedEventHandler();
 	
-	public const float JumpVelocity = -600.0f;
+	public const int JumpVelocity = -600;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -22,7 +22,6 @@ public partial class Player : CharacterBody2D
 		
 		if (_crashed == false)
 		{
-			GD.Print(_crashed);
 			if (Input.IsActionJustPressed("jump"))
 			{
 				velocity.Y = JumpVelocity;
@@ -41,7 +40,11 @@ public partial class Player : CharacterBody2D
 
 	public void Crash()
 	{
-		_crashed = true;
-		EmitSignal(SignalName.Crashed);
+		if (_crashed == false)
+		{
+			Velocity = new Vector2(0, Velocity.Y + JumpVelocity);
+			_crashed = true;
+			EmitSignal(SignalName.Crashed);
+		}
 	}
 }

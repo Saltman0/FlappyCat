@@ -3,6 +3,12 @@ using System;
 
 public partial class MenuInterface : Control
 {
+	[Signal]
+	public delegate void PlayGameEventHandler();
+	
+	[Signal]
+	public delegate void ExitGameEventHandler();
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,11 +21,11 @@ public partial class MenuInterface : Control
 
 	public void OnPlayButtonPressed()
 	{
-		GD.Print("Play");
+		EmitSignal(SignalName.PlayGame);
 	}
 	
 	public void OnExitButtonPressed()
 	{
-		GD.Print("Exit");
+		EmitSignal(SignalName.ExitGame);
 	}
 }

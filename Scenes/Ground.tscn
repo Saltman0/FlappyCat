@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/Ground.cs" id="1_f3gba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdclu"]
-size = Vector2(360, 246)
+size = Vector2(360, 138)
 
 [node name="Ground" type="Area2D"]
 script = ExtResource("1_f3gba")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(1, 12.3)
+scale = Vector2(1, 6.9)
 color = Color(0.301961, 0.670588, 0.356863, 1)
 polygon = PackedVector2Array(-180, 10, 180, 10, 180, -10, -180, -10)
 
