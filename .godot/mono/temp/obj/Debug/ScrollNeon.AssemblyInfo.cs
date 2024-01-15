@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScrollNeon")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8dbff0b40cc44cfa4317598c7b816e7bdde5aa2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42fb88bc41829ac650ff54ab32ee235ff498a080")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScrollNeon")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScrollNeon")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,6 @@
 is_global = true
 build_property.GodotDisabledSourceGenerators = 
-build_property.GodotProjectDir = /home/saltman/Documents/ScrollNeon/
+build_property.GodotProjectDir = /run/media/deck/5a196a5c-f380-401a-a1a9-74b858530e2f/ScrollNeon/
 build_property.GodotProjectDirBase64 = 
 build_property.GodotSourceGenerators = 
 build_property.IsGodotToolsProject = 
@@ -13,6 +13,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ScrollNeon
-build_property.ProjectDir = /home/saltman/Documents/ScrollNeon/
+build_property.ProjectDir = /run/media/deck/5a196a5c-f380-401a-a1a9-74b858530e2f/ScrollNeon/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
