@@ -32,6 +32,11 @@ public partial class Game : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
+		GetNode<Label>("GameStartLabel").Text = Convert.ToInt16(GetNode<Timer>("GameStartTimer").TimeLeft).ToString();
+		if (Convert.ToInt16(GetNode<Timer>("GameStartTimer").TimeLeft) == 0)
+		{
+			GetNode<Label>("GameStartLabel").Visible = false;
+		}
 		if (Input.IsActionJustPressed("pause"))
 		{
 			

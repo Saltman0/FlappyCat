@@ -2,6 +2,9 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
+	[Export]
+	private AudioStreamPlayer2D _playerJumpAudio;
+	
 	private int _speed = 300;
 
 	private bool _crashed;
@@ -25,6 +28,7 @@ public partial class Player : CharacterBody2D
 			if (Input.IsActionJustPressed("jump"))
 			{
 				velocity.Y = JumpVelocity;
+				_playerJumpAudio.Play();
 			}
 		}
 

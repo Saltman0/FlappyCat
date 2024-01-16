@@ -14,8 +14,3 @@ position = Vector2(0, -389)
 
 [node name="DownBlock" parent="." instance=ExtResource("1_p30ny")]
 position = Vector2(0, 389)
-
-[node name="WallNotifier" type="VisibleOnScreenEnabler2D" parent="."]
-scale = Vector2(3.2, 67.8)
-
-[connection signal="screen_exited" from="WallNotifier" to="." method="OnWallNotifierScreenExited"]

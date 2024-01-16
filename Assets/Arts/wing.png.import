@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccjjchc3mvums"
-path="res://.godot/imported/wall-tiles-autotile.png-f48c7c5a8854cf861f01800a3afae0be.ctex"
+uid="uid://cnymujwi1sdq1"
+path="res://.godot/imported/wing.png-1b9f149273de684bf1675b4df4c82eb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/wall-tiles-autotile.png"
-dest_files=["res://.godot/imported/wall-tiles-autotile.png-f48c7c5a8854cf861f01800a3afae0be.ctex"]
+source_file="res://Assets/Arts/wing.png"
+dest_files=["res://.godot/imported/wing.png-1b9f149273de684bf1675b4df4c82eb1.ctex"]
 
 [params]
 

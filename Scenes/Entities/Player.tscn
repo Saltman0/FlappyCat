@@ -1,16 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0qixsmh1y2vh"]
+[gd_scene load_steps=5 format=3 uid="uid://d0qixsmh1y2vh"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player.cs" id="1_drj3h"]
+[ext_resource type="AudioStream" uid="uid://cse3tlguisnw1" path="res://Assets/Audio/Jump.wav" id="2_u3nqq"]
+[ext_resource type="Texture2D" uid="uid://cct1kdkxxygj6" path="res://Assets/Arts/Cat.png" id="3_3ag8p"]
+[ext_resource type="Texture2D" uid="uid://cnymujwi1sdq1" path="res://Assets/Arts/wing.png" id="3_b6pev"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_65pgo"]
-size = Vector2(32, 32)
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerJumpAudio")]
 script = ExtResource("1_drj3h")
+_playerJumpAudio = NodePath("PlayerJumpAudio")
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_65pgo")
+[node name="PlayerJumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_u3nqq")
+volume_db = 10.0
 
-[node name="PlayerSprite" type="Polygon2D" parent="."]
-scale = Vector2(0.25, 0.25)
-polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+[node name="PlayerCollision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14, -17, -9, -17, -9, -15, -4, -15, -4, -10, 4, -10, 4, -15, 8, -15, 8, -17, 14, -17, 14, -15, 16, -15, 16, -6, 18, -6, 18, 6, 16, 6, 16, 8, 15, 8, 13, 8, 13, 10, 11, 10, 11, 13, 9, 13, 9, 15, 7, 15, 7, 17, -10, 17, -10, 15, -14, 15, -14, 8, -16, 8, -16, 6, -18, 6, -18, -6, -16, -6, -16, -15, -14, -15)
+
+[node name="WingSprite" type="Sprite2D" parent="."]
+position = Vector2(-21, -5)
+texture = ExtResource("3_b6pev")
+flip_h = true
+hframes = 2
+vframes = 2
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(-2.5, -7.74999)
+scale = Vector2(0.0599662, 0.0603885)
+texture = ExtResource("3_3ag8p")

@@ -23,9 +23,20 @@ public partial class GameUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Input.IsActionJustPressed("pause"))
+	}
+
+	public override void _Input(InputEvent @inputEvent)
+	{
+		if (@inputEvent.IsActionPressed("pause"))
 		{
-			_pauseButton.EmitSignal("pressed");
+			if (GetTree().Paused)
+			{
+				_resumeButton.EmitSignal("pressed");
+			}
+			else
+			{
+				_pauseButton.EmitSignal("pressed");
+			}
 		}
 	}
 
@@ -41,11 +52,13 @@ public partial class GameUI : Control
 
 	public void OnReplayButtonPressed()
 	{
+		GetTree().Paused = false;
 		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
 	}
 
 	public void OnReturnToMainMenuButtonPressed()
 	{
+		GetTree().Paused = false;
 		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Main.tscn"));
 	}
 
@@ -65,11 +78,11 @@ public partial class GameUI : Control
 	
 	public void ResumeGame()
 	{
+		GetTree().Paused = false;
 		_pauseButton.Visible = true;
 		_resumeButton.Visible = false;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = false;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
-		GetTree().Paused = false;
 	}
 
 	public void GameOver()
