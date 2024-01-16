@@ -3,6 +3,18 @@ using System;
 
 public partial class GameUI : Control
 {
+	[Export]
+	private Button _pauseButton;
+	
+	[Export]
+	private Button _resumeButton;
+	
+	[Export]
+	private Button _replayButton;
+	
+	[Export]
+	private Button _returnToMainMenuButton;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,6 +23,10 @@ public partial class GameUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Input.IsActionJustPressed("pause"))
+		{
+			_pauseButton.EmitSignal("pressed");
+		}
 	}
 
 	public void OnPauseButtonPressed()
@@ -20,7 +36,6 @@ public partial class GameUI : Control
 
 	public void OnResumeButtonPressed()
 	{
-		GD.Print("REsume");
 		ResumeGame();
 	}
 
@@ -41,8 +56,8 @@ public partial class GameUI : Control
 
 	public void PauseGame()
 	{
-		GetNode<Button>("ResumeAndPauseButtonsContainer/PauseButton").Visible = false;
-		GetNode<Button>("ResumeAndPauseButtonsContainer/ResumeButton").Visible = true;
+		_pauseButton.Visible = false;
+		_resumeButton.Visible = true;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
 		GetTree().Paused = true;
@@ -50,17 +65,17 @@ public partial class GameUI : Control
 	
 	public void ResumeGame()
 	{
-		GetNode<Button>("ResumeAndPauseButtonsContainer/PauseButton").Visible = true;
-		GetNode<Button>("ResumeAndPauseButtonsContainer/ResumeButton").Visible = false;
-		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
+		_pauseButton.Visible = true;
+		_resumeButton.Visible = false;
+		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = false;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
 		GetTree().Paused = false;
 	}
 
 	public void GameOver()
 	{
-		GetNode<VBoxContainer>("ResumeAndPauseButtonsContainer/PauseButton").Visible = false;
-		GetNode<VBoxContainer>("ResumeAndPauseButtonsContainer/ResumeButton").Visible = false;
+		_pauseButton.Visible = false;
+		_resumeButton.Visible = false;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Game over";
 	}

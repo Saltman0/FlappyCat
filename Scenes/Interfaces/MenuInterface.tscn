@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Interfaces/MenuInterface.cs" id="1_s0f0g"]
 
-[node name="MenuInterface" type="Control"]
+[node name="MenuInterface" type="Control" node_paths=PackedStringArray("_playButton", "_exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s0f0g")
+_playButton = NodePath("MenuButtonsContainer/PlayButton")
+_exitButton = NodePath("MenuButtonsContainer/ExitButton")
 
 [node name="GameTitle" type="Label" parent="."]
 layout_mode = 1

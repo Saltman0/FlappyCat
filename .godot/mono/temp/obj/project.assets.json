@@ -88,19 +88,19 @@
     ]
   },
   "packageFolders": {
-    "/home/saltman/.nuget/packages/": {}
+    "/home/deck/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/saltman/Documents/ScrollNeon/ScrollNeon.csproj",
+      "projectUniqueName": "/run/media/deck/5a196a5c-f380-401a-a1a9-74b858530e2f/ScrollNeon/ScrollNeon.csproj",
       "projectName": "ScrollNeon",
-      "projectPath": "/home/saltman/Documents/ScrollNeon/ScrollNeon.csproj",
-      "packagesPath": "/home/saltman/.nuget/packages/",
-      "outputPath": "/home/saltman/Documents/ScrollNeon/.godot/mono/temp/obj/",
+      "projectPath": "/run/media/deck/5a196a5c-f380-401a-a1a9-74b858530e2f/ScrollNeon/ScrollNeon.csproj",
+      "packagesPath": "/home/deck/.nuget/packages/",
+      "outputPath": "/run/media/deck/5a196a5c-f380-401a-a1a9-74b858530e2f/ScrollNeon/.godot/mono/temp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/saltman/.nuget/NuGet/NuGet.Config"
+        "/home/deck/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -163,7 +163,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/app/lib/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }
