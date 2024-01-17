@@ -12,6 +12,6 @@ autostart = true
 position = Vector2(0, -200)
 
 [node name="WallSpawnMarkerDown" type="Marker2D" parent="."]
-position = Vector2(0, 200)
+position = Vector2(0, 150)
 
 [connection signal="timeout" from="WallSpawnTimer" to="." method="OnWallSpawnerTimerTimeout"]

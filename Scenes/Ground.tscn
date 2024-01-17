@@ -6,6 +6,7 @@
 size = Vector2(360, 138)
 
 [node name="Ground" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_f3gba")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

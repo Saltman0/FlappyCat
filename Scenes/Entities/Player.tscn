@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnymujwi1sdq1" path="res://Assets/Arts/wing.png" id="3_b6pev"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerJumpAudio")]
+collision_mask = 6
 script = ExtResource("1_drj3h")
 _playerJumpAudio = NodePath("PlayerJumpAudio")
 

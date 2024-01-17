@@ -3,6 +3,15 @@ using System;
 
 public partial class Game : Node
 {
+	[Export]
+	private AudioStreamPlayer2D _gameOverAudio;
+	
+	[Export]
+	private Timer _gameStartTimer;
+	
+	[Export]
+	private GameUI _gameUi;
+	
 	private bool _isGameOver;
 	
 	private int _score;
@@ -32,20 +41,10 @@ public partial class Game : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
-		GetNode<Label>("GameStartLabel").Text = Convert.ToInt16(GetNode<Timer>("GameStartTimer").TimeLeft).ToString();
-		if (Convert.ToInt16(GetNode<Timer>("GameStartTimer").TimeLeft) == 0)
-		{
-			GetNode<Label>("GameStartLabel").Visible = false;
-		}
-		if (Input.IsActionJustPressed("pause"))
-		{
-			
-		}
 	}
 
 	public void OnWallSpawnerSpawn(float positionX, float positionY)
 	{
-		// TODO FAire appaaite un mur
 		Wall wall = (Wall)GD.Load<PackedScene>("res://Scenes/Wall.tscn").Instantiate();
 		wall.Position = new Vector2(positionX, positionY);
 		_walls.AddChild(wall);
@@ -54,6 +53,7 @@ public partial class Game : Node
 	public void OnGameStartTimerTimeout()
 	{
 		GetNode<WallSpawner>("WallSpawner").ProcessMode = ProcessModeEnum.Always;
+		_gameUi.HideGameStartLabel();
 	}
 
 	public void OnPlayerPassed()
@@ -67,6 +67,8 @@ public partial class Game : Node
 	public void OnPlayerCrashed()
 	{
 		IsGameOver = true;
-		GetNode<GameUI>("GameUI").GameOver();
+		_gameStartTimer.Stop();
+		_gameOverAudio.Play();
+		_gameUi.GameOver();
 	}
 }

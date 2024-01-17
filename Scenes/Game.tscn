@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjmhqcw4siqog"]
+[gd_scene load_steps=9 format=3 uid="uid://bjmhqcw4siqog"]
 
 [ext_resource type="PackedScene" uid="uid://d0qixsmh1y2vh" path="res://Scenes/Entities/Player.tscn" id="1_jar3l"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_lsvam"]
@@ -8,8 +8,25 @@
 [ext_resource type="AudioStream" uid="uid://piphl7003s4u" path="res://Assets/Audio/GameOver.wav" id="6_ribas"]
 [ext_resource type="PackedScene" uid="uid://clpe83whqkp58" path="res://Scenes/Entities/WallSpawner.tscn" id="7_c3heq"]
 
-[node name="Game" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clgv5"]
+size = Vector2(360, 26)
+
+[node name="Game" type="Node" node_paths=PackedStringArray("_gameOverAudio", "_gameStartTimer", "_gameUi")]
 script = ExtResource("1_lsvam")
+_gameOverAudio = NodePath("GameOverAudio")
+_gameStartTimer = NodePath("GameStartTimer")
+_gameUi = NodePath("GameUI")
+
+[node name="OutsideTopBlock" type="StaticBody2D" parent="."]
+position = Vector2(180, -14)
+collision_layer = 4
+
+[node name="OutsideTopBlockCollision" type="CollisionShape2D" parent="OutsideTopBlock"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_clgv5")
+
+[node name="OutsideTopBlockSprite" type="Polygon2D" parent="OutsideTopBlock"]
+polygon = PackedVector2Array(180, 14, -180, 14, -180, -12, 180, -12)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(180, 400)
@@ -28,33 +45,17 @@ position = Vector2(39, 130)
 process_mode = 4
 position = Vector2(430, 400)
 
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ribas")
+volume_db = -3.0
+
 [node name="GameStartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ribas")
-volume_db = -3.0
-
 [node name="GameUI" parent="." instance=ExtResource("5_qf735")]
 metadata/_edit_lock_ = true
-
-[node name="GameStartLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -21.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "3"
-horizontal_alignment = 1
 
 [connection signal="Crashed" from="Player" to="." method="OnPlayerCrashed"]
 [connection signal="Passed" from="Player" to="." method="OnPlayerPassed"]

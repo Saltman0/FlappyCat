@@ -6,6 +6,7 @@
 size = Vector2(64, 578)
 
 [node name="Block" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_m63bk")
 
 [node name="BlockCollision" type="CollisionShape2D" parent="."]

@@ -6,6 +6,7 @@
 size = Vector2(64, 200)
 
 [node name="ScoreArea" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_usd7g")
 
 [node name="ScoreAreaCollision" type="CollisionShape2D" parent="."]

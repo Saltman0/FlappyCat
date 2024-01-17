@@ -91,5 +91,11 @@ public partial class GameUI : Control
 		_resumeButton.Visible = false;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Game over";
+		GetNode<Label>("GameStartLabel").Visible = false;
+	}
+
+	public void HideGameStartLabel()
+	{
+		GetNode<Label>("GameStartLabel").Visible = false;
 	}
 }

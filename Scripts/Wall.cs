@@ -18,4 +18,9 @@ public partial class Wall : Node2D
 	{
 		player.Pass();
 	}
+
+	public void OnWallTimerTimeout()
+	{
+		QueueFree();
+	}
 }
