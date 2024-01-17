@@ -1,9 +1,9 @@
-res://Scenes/Interfaces/MenuInterface.tscn
 res://Scenes/Main.tscn
 res://Scenes/SceneTransition.tscn
 res://Scenes/Game.tscn
+res://Scenes/Interfaces/MenuInterface.tscn
 res://Scenes/Interfaces/GameUI.tscn
-res://Scenes/Wall.tscn
+res://Scenes/Entities/Player.tscn
 res://Scripts/Block.cs
 res://Scripts/Entities/Player.cs
 res://Scripts/Game.cs
@@ -14,4 +14,7 @@ res://Scripts/Main.cs
 res://Scripts/SceneTransition.cs
 res://Scripts/Wall.cs
 res://Scripts/Zones/ScoreArea.cs
-res://Scenes/Entities/Player.tscn
+res://Scenes/Entities/WallSpawn.tscn
+res://Scripts/Entities/WallSpawn.cs
+res://Scenes/Entities/WallSpawner.tscn
+res://Scripts/Entities/WallSpawner.cs

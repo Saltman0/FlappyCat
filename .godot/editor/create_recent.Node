@@ -1,5 +1,6 @@
-Label
+Marker2D
 Timer
+Label
 Sprite2D
 CollisionPolygon2D
 CollisionShape2D
@@ -11,4 +12,3 @@ VBoxContainer
 HBoxContainer
 AnimationPlayer
 ColorRect
-Area2D

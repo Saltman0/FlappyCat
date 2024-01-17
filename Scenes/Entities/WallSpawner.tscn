@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://clpe83whqkp58"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/WallSpawner.cs" id="1_3ky1r"]
+
+[node name="WallSpawner" type="Node2D"]
+script = ExtResource("1_3ky1r")
+
+[node name="WallSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="WallSpawnMarkerTop" type="Marker2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="WallSpawnMarkerDown" type="Marker2D" parent="."]
+position = Vector2(0, 200)
+
+[connection signal="timeout" from="WallSpawnTimer" to="." method="OnWallSpawnerTimerTimeout"]

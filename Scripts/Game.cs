@@ -42,21 +42,18 @@ public partial class Game : Node
 			
 		}
 	}
-	
-	public void OnWallSpawnTimerTimeout()
+
+	public void OnWallSpawnerSpawn(float positionX, float positionY)
 	{
+		// TODO FAire appaaite un mur
 		Wall wall = (Wall)GD.Load<PackedScene>("res://Scenes/Wall.tscn").Instantiate();
+		wall.Position = new Vector2(positionX, positionY);
 		_walls.AddChild(wall);
+	}
 
-		Rect2 viewportRect = GetViewport().GetVisibleRect();
-
-		wall.Position = new Vector2(
-			viewportRect.End.X, 
-			(float)GD.RandRange(
-				viewportRect.Size.Y * 0.15,
-				viewportRect.Size.Y * 0.65
-			)
-		);
+	public void OnGameStartTimerTimeout()
+	{
+		GetNode<WallSpawner>("WallSpawner").ProcessMode = ProcessModeEnum.Always;
 	}
 
 	public void OnPlayerPassed()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjmhqcw4siqog"]
+[gd_scene load_steps=8 format=3 uid="uid://bjmhqcw4siqog"]
 
 [ext_resource type="PackedScene" uid="uid://d0qixsmh1y2vh" path="res://Scenes/Entities/Player.tscn" id="1_jar3l"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_lsvam"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4tshwpsderf5" path="res://Scenes/Interfaces/GameUI.tscn" id="5_qf735"]
 [ext_resource type="PackedScene" uid="uid://b0raa74srot3o" path="res://Scenes/Ground.tscn" id="5_uolfh"]
 [ext_resource type="AudioStream" uid="uid://piphl7003s4u" path="res://Assets/Audio/GameOver.wav" id="6_ribas"]
+[ext_resource type="PackedScene" uid="uid://clpe83whqkp58" path="res://Scenes/Entities/WallSpawner.tscn" id="7_c3heq"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lsvam")
@@ -23,20 +24,21 @@ position = Vector2(39, 130)
 
 [node name="Walls" type="Node2D" parent="."]
 
-[node name="GameUI" parent="." instance=ExtResource("5_qf735")]
-metadata/_edit_lock_ = true
-
-[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ribas")
-volume_db = -3.0
-
-[node name="WallSpawnTimer" type="Timer" parent="."]
-autostart = true
+[node name="WallSpawner" parent="." instance=ExtResource("7_c3heq")]
+process_mode = 4
+position = Vector2(430, 400)
 
 [node name="GameStartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ribas")
+volume_db = -3.0
+
+[node name="GameUI" parent="." instance=ExtResource("5_qf735")]
+metadata/_edit_lock_ = true
 
 [node name="GameStartLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -45,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -21.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -56,5 +58,5 @@ horizontal_alignment = 1
 
 [connection signal="Crashed" from="Player" to="." method="OnPlayerCrashed"]
 [connection signal="Passed" from="Player" to="." method="OnPlayerPassed"]
-[connection signal="timeout" from="WallSpawnTimer" to="." method="OnWallSpawnTimerTimeout"]
+[connection signal="Spawn" from="WallSpawner" to="." method="OnWallSpawnerSpawn"]
 [connection signal="timeout" from="GameStartTimer" to="." method="OnGameStartTimerTimeout"]
