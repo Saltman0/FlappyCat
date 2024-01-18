@@ -1,16 +1,21 @@
 using Godot;
 using System;
 
-public partial class Main : Node
+public partial class Main : Node2D
 {
-    public void OnMenuInterfacePlayGame()
-    {
-        /*GetNode<SceneTransition>("/root/SceneTransition").ChangeScene(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));*/
-        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
-    }
+    [Export]
+    private Menu _menu;
     
-    public void OnMenuInterfaceExitGame()
+    [Export]
+    private Game _game;
+
+    public void OnMenuGameExited()
     {
         GetTree().Quit();
+    }
+    
+    public void OnMenuGamePlayed()
+    {
+        _game.Enable();
     }
 }

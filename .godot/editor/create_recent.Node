@@ -1,7 +1,10 @@
+CanvasLayer
+Control
+Node2D
+Node
 CollisionShape2D
 Polygon2D
 StaticBody2D
-Node2D
 Timer
 VisibleOnScreenNotifier2D
 Camera2D
@@ -9,6 +12,3 @@ Area2D
 Marker2D
 Label
 Sprite2D
-CollisionPolygon2D
-AudioStreamPlayer2D
-Node

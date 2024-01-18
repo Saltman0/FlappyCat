@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Game : Node
+public partial class Game : Node2D
 {
 	[Export]
 	private AudioStreamPlayer2D _gameOverAudio;
@@ -70,5 +70,11 @@ public partial class Game : Node
 		_gameStartTimer.Stop();
 		_gameOverAudio.Play();
 		_gameUi.GameOver();
+	}
+
+	public void Enable()
+	{
+		ProcessMode = ProcessModeEnum.Inherit;
+		_gameUi.Visible = true;
 	}
 }

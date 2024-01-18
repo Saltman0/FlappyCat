@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameUI : Control
+public partial class GameUI : CanvasLayer
 {
 	[Signal]
 	public delegate void GamePausedEventHandler();
@@ -76,6 +76,7 @@ public partial class GameUI : Control
 		_resumeButton.Visible = true;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
+		GetNode<Label>("GameStartLabel").Visible = false;
 		GetTree().Paused = true;
 	}
 	
@@ -86,6 +87,7 @@ public partial class GameUI : Control
 		_resumeButton.Visible = false;
 		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = false;
 		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
+		GetNode<Label>("GameStartLabel").Visible = false;
 	}
 
 	public void GameOver()
