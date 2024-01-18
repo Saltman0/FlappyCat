@@ -52,7 +52,7 @@ public partial class Game : Node
 
 	public void OnGameStartTimerTimeout()
 	{
-		GetNode<WallSpawner>("WallSpawner").ProcessMode = ProcessModeEnum.Always;
+		GetNode<WallSpawner>("WallSpawner").ProcessMode = ProcessModeEnum.Inherit;
 		_gameUi.HideGameStartLabel();
 	}
 

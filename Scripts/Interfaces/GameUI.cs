@@ -3,6 +3,9 @@ using System;
 
 public partial class GameUI : Control
 {
+	[Signal]
+	public delegate void GamePausedEventHandler();
+	
 	[Export]
 	private Button _pauseButton;
 	
