@@ -74,7 +74,7 @@ public partial class Game : Node2D
 
 	public void Enable()
 	{
-		ProcessMode = ProcessModeEnum.Inherit;
 		_gameUi.Visible = true;
+		ProcessMode = ProcessModeEnum.Always;
 	}
 }

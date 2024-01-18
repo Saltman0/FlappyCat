@@ -16,6 +16,7 @@ public partial class Main : Node2D
     
     public void OnMenuGamePlayed()
     {
+        _menu.Disable();
         _game.Enable();
     }
 }

@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_nxbu8"]
 [ext_resource type="PackedScene" uid="uid://j2sav60fb07f" path="res://Scenes/Interfaces/MenuInterface.tscn" id="2_xlwgp"]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" node_paths=PackedStringArray("_menuInterface")]
 script = ExtResource("1_nxbu8")
+_menuInterface = NodePath("MenuInterface")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(180, 400)
