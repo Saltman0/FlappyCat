@@ -1,30 +1,18 @@
 using Godot;
 using System;
 
-public partial class Menu : Node2D
+public partial class Menu : Node
 {
     [Export]
     private MenuInterface _menuInterface;
     
-    [Signal]
-    public delegate void GamePlayedEventHandler();
-    
-    [Signal]
-    public delegate void GameExitedEventHandler();
-    
-    public void OnMenuInterfacePlayGame()
+    public void OnMenuInterfacePlayButtonPressed()
     {
-        EmitSignal(SignalName.GamePlayed);
+        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
     }
     
-    public void OnMenuInterfaceExitGame()
+    public void OnMenuInterfaceExitButtonPressed()
     {
-        EmitSignal(SignalName.GameExited);
-    }
-    
-    public void Disable()
-    {
-        _menuInterface.Visible = false;
-        ProcessMode = ProcessModeEnum.Disabled;
+        GetTree().Quit();
     }
 }

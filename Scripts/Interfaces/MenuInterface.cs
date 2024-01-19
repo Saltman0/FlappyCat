@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MenuInterface : CanvasLayer
+public partial class MenuInterface : Control
 {
 	[Export] 
 	private Button _playButton;
@@ -10,28 +10,18 @@ public partial class MenuInterface : CanvasLayer
 	private Button _exitButton;
 	
 	[Signal]
-	public delegate void PlayGameEventHandler();
+	public delegate void PlayButtonPressedEventHandler();
 	
 	[Signal]
-	public delegate void ExitGameEventHandler();
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+	public delegate void ExitButtonPressedEventHandler();
 
 	public void OnPlayButtonPressed()
 	{
-		EmitSignal(SignalName.PlayGame);
+		EmitSignal(SignalName.PlayButtonPressed);
 	}
 	
 	public void OnExitButtonPressed()
 	{
-		EmitSignal(SignalName.ExitGame);
+		EmitSignal(SignalName.ExitButtonPressed);
 	}
 }

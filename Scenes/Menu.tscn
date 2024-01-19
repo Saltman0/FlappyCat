@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_nxbu8"]
 [ext_resource type="PackedScene" uid="uid://j2sav60fb07f" path="res://Scenes/Interfaces/MenuInterface.tscn" id="2_xlwgp"]
 
-[node name="Menu" type="Node2D" node_paths=PackedStringArray("_menuInterface")]
+[node name="Menu" type="Node" node_paths=PackedStringArray("_menuInterface")]
 script = ExtResource("1_nxbu8")
 _menuInterface = NodePath("MenuInterface")
 
@@ -15,5 +15,5 @@ texture = ExtResource("1_msfhd")
 
 [node name="MenuInterface" parent="." instance=ExtResource("2_xlwgp")]
 
-[connection signal="ExitGame" from="MenuInterface" to="." method="OnMenuInterfaceExitGame"]
-[connection signal="PlayGame" from="MenuInterface" to="." method="OnMenuInterfacePlayGame"]
+[connection signal="ExitButtonPressed" from="MenuInterface" to="." method="OnMenuInterfaceExitButtonPressed"]
+[connection signal="PlayButtonPressed" from="MenuInterface" to="." method="OnMenuInterfacePlayButtonPressed"]

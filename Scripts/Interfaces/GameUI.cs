@@ -1,8 +1,20 @@
 using Godot;
 using System;
 
-public partial class GameUI : CanvasLayer
+public partial class GameUI : Control
 {
+	[Signal]
+	public delegate void ResumeButtonPressedEventHandler();
+	
+	[Signal]
+	public delegate void PauseButtonPressedEventHandler();
+	
+	[Signal]
+	public delegate void ReplayButtonPressedEventHandler();
+	
+	[Signal]
+	public delegate void ReturnToMainMenuPressedEventHandler();
+	
 	[Signal]
 	public delegate void GamePausedEventHandler();
 	
@@ -45,24 +57,24 @@ public partial class GameUI : CanvasLayer
 
 	public void OnPauseButtonPressed()
 	{
+		EmitSignal(SignalName.PauseButtonPressed);
 		PauseGame();
 	}
 
 	public void OnResumeButtonPressed()
 	{
+		EmitSignal(SignalName.ResumeButtonPressed);
 		ResumeGame();
 	}
 
 	public void OnReplayButtonPressed()
 	{
-		GetTree().Paused = false;
-		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
+		EmitSignal(SignalName.ReplayButtonPressed);
 	}
 
 	public void OnReturnToMainMenuButtonPressed()
 	{
-		GetTree().Paused = false;
-		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Main.tscn"));
+		EmitSignal(SignalName.ReturnToMainMenuPressed);
 	}
 
 	public void UpdateScore(int score)

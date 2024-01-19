@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Game : Node2D
+public partial class Game : Node
 {
 	[Export]
 	private AudioStreamPlayer2D _gameOverAudio;
@@ -39,10 +39,6 @@ public partial class Game : Node2D
 		_walls = GetNode<Node2D>("Walls");
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-	}
-
 	public void OnWallSpawnerSpawn(float positionX, float positionY)
 	{
 		Wall wall = (Wall)GD.Load<PackedScene>("res://Scenes/Wall.tscn").Instantiate();
@@ -76,5 +72,16 @@ public partial class Game : Node2D
 	{
 		_gameUi.Visible = true;
 		ProcessMode = ProcessModeEnum.Always;
+	}
+
+	public void OnGameUIReplayButtonPressed()
+	{
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
+	}
+
+	public void OnGameUIReturnToMainMenuButtonPressed()
+	{
+		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Menu.tscn"));
 	}
 }
