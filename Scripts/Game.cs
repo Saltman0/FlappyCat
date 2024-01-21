@@ -1,8 +1,18 @@
 using Godot;
 using System;
 
-public partial class Game : Node
+public partial class Game : Node2D
 {
+	private PackedScene _menuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menu.tscn");
+	
+	private PackedScene _gameScene = ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn");
+	
+	[Export]
+	private Node2D _walls;
+	
+	[Export]
+	private WallSpawner _wallSpawner;
+	
 	[Export]
 	private AudioStreamPlayer2D _gameOverAudio;
 	
@@ -16,8 +26,6 @@ public partial class Game : Node
 	
 	private int _score;
 
-	private Node2D _walls;
-
 	public bool IsGameOver
 	{
 		get => _isGameOver;
@@ -30,13 +38,8 @@ public partial class Game : Node
 		set
 		{
 			_score = value;
-			GetNode<GameUI>("GameUI").UpdateScore(_score);
+			_gameUi.UpdateScore(_score);
 		}
-	}
-
-	public override void _Ready()
-	{
-		_walls = GetNode<Node2D>("Walls");
 	}
 
 	public void OnWallSpawnerSpawn(float positionX, float positionY)
@@ -48,7 +51,7 @@ public partial class Game : Node
 
 	public void OnGameStartTimerTimeout()
 	{
-		GetNode<WallSpawner>("WallSpawner").ProcessMode = ProcessModeEnum.Inherit;
+		_wallSpawner.ProcessMode = ProcessModeEnum.Inherit;
 		_gameUi.HideGameStartLabel();
 	}
 
@@ -77,11 +80,12 @@ public partial class Game : Node
 	public void OnGameUIReplayButtonPressed()
 	{
 		GetTree().Paused = false;
-		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn"));
+		GetTree().ChangeSceneToPacked(_gameScene);
 	}
 
 	public void OnGameUIReturnToMainMenuButtonPressed()
 	{
-		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Menu.tscn"));
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToPacked(_menuScene);
 	}
 }

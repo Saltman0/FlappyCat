@@ -2,20 +2,26 @@
 
 [ext_resource type="Script" path="res://Scripts/Interfaces/GameUI.cs" id="1_2soxm"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton")]
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel")]
+script = ExtResource("1_2soxm")
+_pauseButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/PauseButton")
+_resumeButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/ResumeButton")
+_replayButton = NodePath("GameControl/GameOverAndButtonsContainer/ReplayButton")
+_returnToMainMenuButton = NodePath("GameControl/GameOverAndButtonsContainer/ReturnToMainMenuButton")
+_gameOverAndButtonsContainer = NodePath("GameControl/GameOverAndButtonsContainer")
+_gameLabel = NodePath("GameControl/GameOverAndButtonsContainer/GameLabel")
+_gameStartLabel = NodePath("GameControl/GameStartLabel")
+_scoreLabel = NodePath("GameControl/ScoreLabel")
+
+[node name="GameControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2soxm")
-_pauseButton = NodePath("ResumeAndPauseButtonsContainer/PauseButton")
-_resumeButton = NodePath("ResumeAndPauseButtonsContainer/ResumeButton")
-_replayButton = NodePath("GameOverAndButtonsContainer/ReplayButton")
-_returnToMainMenuButton = NodePath("GameOverAndButtonsContainer/ReturnToMainMenuButton")
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="GameControl"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -28,29 +34,29 @@ grow_horizontal = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="ResumeAndPauseButtonsContainer" type="CenterContainer" parent="."]
+[node name="ResumeAndPauseButtonsContainer" type="CenterContainer" parent="GameControl"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -85.0
-offset_top = 12.0
-offset_right = -15.0
-offset_bottom = 52.0
+offset_left = -84.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 54.0
 grow_horizontal = 0
 
-[node name="ResumeButton" type="Button" parent="ResumeAndPauseButtonsContainer"]
+[node name="ResumeButton" type="Button" parent="GameControl/ResumeAndPauseButtonsContainer"]
 process_mode = 2
 visible = false
 layout_mode = 2
 text = "Resume
 "
 
-[node name="PauseButton" type="Button" parent="ResumeAndPauseButtonsContainer"]
+[node name="PauseButton" type="Button" parent="GameControl/ResumeAndPauseButtonsContainer"]
 layout_mode = 2
 text = "Pause"
 
-[node name="GameOverAndButtonsContainer" type="VBoxContainer" parent="."]
+[node name="GameOverAndButtonsContainer" type="VBoxContainer" parent="GameControl"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -58,39 +64,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -20.0
-offset_right = 46.0
-offset_bottom = 20.0
+offset_left = -87.0
+offset_top = -52.5
+offset_right = 87.0
+offset_bottom = 52.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameLabel" type="Label" parent="GameOverAndButtonsContainer"]
+[node name="GameLabel" type="Label" parent="GameControl/GameOverAndButtonsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="ReplayButton" type="Button" parent="GameOverAndButtonsContainer"]
+[node name="ReplayButton" type="Button" parent="GameControl/GameOverAndButtonsContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Replay"
 
-[node name="ReturnToMainMenuButton" type="Button" parent="GameOverAndButtonsContainer"]
+[node name="ReturnToMainMenuButton" type="Button" parent="GameControl/GameOverAndButtonsContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Return to main menu"
 
-[node name="GameStartLabel" type="Label" parent="."]
+[node name="GameStartLabel" type="Label" parent="GameControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -85.5
 offset_top = -21.0
-offset_right = 20.0
+offset_right = 85.5
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -98,7 +104,7 @@ theme_override_font_sizes/font_size = 30
 text = "Ready... fly !"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="ResumeAndPauseButtonsContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
-[connection signal="pressed" from="ResumeAndPauseButtonsContainer/PauseButton" to="." method="OnPauseButtonPressed"]
-[connection signal="pressed" from="GameOverAndButtonsContainer/ReplayButton" to="." method="OnReplayButtonPressed"]
-[connection signal="pressed" from="GameOverAndButtonsContainer/ReturnToMainMenuButton" to="." method="OnReturnToMainMenuButtonPressed"]
+[connection signal="pressed" from="GameControl/ResumeAndPauseButtonsContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
+[connection signal="pressed" from="GameControl/ResumeAndPauseButtonsContainer/PauseButton" to="." method="OnPauseButtonPressed"]
+[connection signal="pressed" from="GameControl/GameOverAndButtonsContainer/ReplayButton" to="." method="OnReplayButtonPressed"]
+[connection signal="pressed" from="GameControl/GameOverAndButtonsContainer/ReturnToMainMenuButton" to="." method="OnReturnToMainMenuButtonPressed"]

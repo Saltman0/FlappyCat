@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameUI : Control
+public partial class GameUI : CanvasLayer
 {
 	[Signal]
 	public delegate void ResumeButtonPressedEventHandler();
@@ -29,6 +29,18 @@ public partial class GameUI : Control
 	
 	[Export]
 	private Button _returnToMainMenuButton;
+
+	[Export]
+	private VBoxContainer _gameOverAndButtonsContainer;
+
+	[Export]
+	private Label _gameLabel;
+
+	[Export]
+	private Label _gameStartLabel;
+
+	[Export]
+	private Label _scoreLabel;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -79,16 +91,16 @@ public partial class GameUI : Control
 
 	public void UpdateScore(int score)
 	{
-		GetNode<Label>("ScoreLabel").Text = score.ToString();
+		_scoreLabel.Text = score.ToString();
 	}
 
 	public void PauseGame()
 	{
 		_pauseButton.Visible = false;
 		_resumeButton.Visible = true;
-		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
-		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
-		GetNode<Label>("GameStartLabel").Visible = false;
+		_gameOverAndButtonsContainer.Visible = true;
+		_gameLabel.Text = "Pause";
+		_gameStartLabel.Visible = false;
 		GetTree().Paused = true;
 	}
 	
@@ -97,22 +109,22 @@ public partial class GameUI : Control
 		GetTree().Paused = false;
 		_pauseButton.Visible = true;
 		_resumeButton.Visible = false;
-		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = false;
-		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Pause";
-		GetNode<Label>("GameStartLabel").Visible = false;
+		_gameOverAndButtonsContainer.Visible = false;
+		_gameLabel.Text = "Pause";
+		_gameStartLabel.Visible = false;
 	}
 
 	public void GameOver()
 	{
 		_pauseButton.Visible = false;
 		_resumeButton.Visible = false;
-		GetNode<VBoxContainer>("GameOverAndButtonsContainer").Visible = true;
-		GetNode<Label>("GameOverAndButtonsContainer/GameLabel").Text = "Game over";
-		GetNode<Label>("GameStartLabel").Visible = false;
+		_gameOverAndButtonsContainer.Visible = true;
+		_gameLabel.Text = "Game over";
+		_gameStartLabel.Visible = false;
 	}
 
 	public void HideGameStartLabel()
 	{
-		GetNode<Label>("GameStartLabel").Visible = false;
+		_gameStartLabel.Visible = false;
 	}
 }
