@@ -42,10 +42,8 @@ public partial class Game : Node2D
 		}
 	}
 
-	public void OnWallSpawnerSpawn(float positionX, float positionY)
+	public void OnWallSpawnerWallSpawned(Wall wall)
 	{
-		Wall wall = (Wall)GD.Load<PackedScene>("res://Scenes/Wall.tscn").Instantiate();
-		wall.Position = new Vector2(positionX, positionY);
 		_walls.AddChild(wall);
 	}
 

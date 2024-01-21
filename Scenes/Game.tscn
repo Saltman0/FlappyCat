@@ -60,7 +60,7 @@ autostart = true
 
 [connection signal="Crashed" from="Player" to="." method="OnPlayerCrashed"]
 [connection signal="Passed" from="Player" to="." method="OnPlayerPassed"]
-[connection signal="Spawn" from="WallSpawner" to="." method="OnWallSpawnerSpawn"]
+[connection signal="WallSpawned" from="WallSpawner" to="." method="OnWallSpawnerWallSpawned"]
 [connection signal="timeout" from="GameStartTimer" to="." method="OnGameStartTimerTimeout"]
 [connection signal="ReplayButtonPressed" from="GameUI" to="." method="OnGameUIReplayButtonPressed"]
 [connection signal="ReturnToMainMenuPressed" from="GameUI" to="." method="OnGameUIReturnToMainMenuButtonPressed"]
