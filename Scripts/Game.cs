@@ -3,6 +3,10 @@ using System;
 
 public partial class Game : Node2D
 {
+	private bool _isGameOver;
+	
+	private int _score;
+	
 	private PackedScene _menuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menu.tscn");
 	
 	private PackedScene _gameScene = ResourceLoader.Load<PackedScene>("res://Scenes/Game.tscn");
@@ -24,10 +28,6 @@ public partial class Game : Node2D
 	
 	[Export]
 	private GameUI _gameUi;
-	
-	private bool _isGameOver;
-	
-	private int _score;
 
 	/// <summary>
 	/// Get and set if the game is over
