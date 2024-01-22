@@ -1,8 +1,19 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class AllHighScore : Resource
 {
-    [Export]
-    private int[] _highScores = new int[10];
+    private List<int> _highScores = new List<int>();
+
+    /// <summary>
+    /// Add a new highscore
+    /// </summary>
+    /// <param name="highscore"></param>
+    public void AddHighScore(int highscore)
+    {
+        _highScores.Add(highscore);
+        _highScores.Sort();
+        _highScores.Reverse();
+    }
 }
