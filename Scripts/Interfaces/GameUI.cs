@@ -38,16 +38,6 @@ public partial class GameUI : CanvasLayer
 
 	[Export]
 	private Label _scoreLabel;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
-	{
-	}
 
 	public override void _Input(InputEvent @inputEvent)
 	{
@@ -63,41 +53,7 @@ public partial class GameUI : CanvasLayer
 			}
 		}
 	}
-
-	/// <summary>
-	/// Emit a signal when the "Pause" button is pressed
-	/// </summary>
-	public void OnPauseButtonPressed()
-	{
-		EmitSignal(SignalName.PauseButtonPressed);
-		PauseGame();
-	}
-
-	/// <summary>
-	/// Emit a signal when the "Resume" button is pressed
-	/// </summary>
-	public void OnResumeButtonPressed()
-	{
-		EmitSignal(SignalName.ResumeButtonPressed);
-		ResumeGame();
-	}
-
-	/// <summary>
-	/// Emit a signal when the "Resume" is pressed
-	/// </summary>
-	public void OnReplayButtonPressed()
-	{
-		EmitSignal(SignalName.ReplayButtonPressed);
-	}
-
-	/// <summary>
-	/// Emit a signal when the "Return to main menu" button is pressed
-	/// </summary>
-	public void OnReturnToMainMenuButtonPressed()
-	{
-		EmitSignal(SignalName.ReturnToMainMenuPressed);
-	}
-
+	
 	/// <summary>
 	/// Update the score
 	/// </summary>
@@ -151,5 +107,39 @@ public partial class GameUI : CanvasLayer
 	public void HideGameStartLabel()
 	{
 		_gameStartLabel.Visible = false;
+	}
+
+	/// <summary>
+	/// Emit a signal when the "Pause" button is pressed
+	/// </summary>
+	public void OnPauseButtonPressed()
+	{
+		EmitSignal(SignalName.PauseButtonPressed);
+		PauseGame();
+	}
+
+	/// <summary>
+	/// Emit a signal when the "Resume" button is pressed
+	/// </summary>
+	public void OnResumeButtonPressed()
+	{
+		EmitSignal(SignalName.ResumeButtonPressed);
+		ResumeGame();
+	}
+
+	/// <summary>
+	/// Emit a signal when the "Resume" is pressed
+	/// </summary>
+	public void OnReplayButtonPressed()
+	{
+		EmitSignal(SignalName.ReplayButtonPressed);
+	}
+
+	/// <summary>
+	/// Emit a signal when the "Return to main menu" button is pressed
+	/// </summary>
+	public void OnReturnToMainMenuButtonPressed()
+	{
+		EmitSignal(SignalName.ReturnToMainMenuPressed);
 	}
 }
