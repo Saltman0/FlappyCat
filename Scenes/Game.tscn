@@ -11,9 +11,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clgv5"]
 size = Vector2(360, 26)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_walls", "_wallSpawner", "_gameOverAudio", "_gameStartTimer", "_gameUi")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_walls", "_player", "_wallSpawner", "_gameOverAudio", "_gameStartTimer", "_gameUi")]
+process_mode = 1
 script = ExtResource("1_lsvam")
 _walls = NodePath("Walls")
+_player = NodePath("Player")
 _wallSpawner = NodePath("WallSpawner")
 _gameOverAudio = NodePath("GameOverAudio")
 _gameStartTimer = NodePath("GameStartTimer")
@@ -39,6 +41,7 @@ texture = ExtResource("4_ry1pq")
 position = Vector2(180, 731)
 
 [node name="Player" parent="." instance=ExtResource("1_jar3l")]
+process_mode = 4
 position = Vector2(39, 130)
 
 [node name="Walls" type="Node2D" parent="."]
@@ -62,5 +65,7 @@ autostart = true
 [connection signal="Passed" from="Player" to="." method="OnPlayerPassed"]
 [connection signal="WallSpawned" from="WallSpawner" to="." method="OnWallSpawnerWallSpawned"]
 [connection signal="timeout" from="GameStartTimer" to="." method="OnGameStartTimerTimeout"]
+[connection signal="PauseButtonPressed" from="GameUI" to="." method="OnGameUIPauseButtonPressed"]
 [connection signal="ReplayButtonPressed" from="GameUI" to="." method="OnGameUIReplayButtonPressed"]
+[connection signal="ResumeButtonPressed" from="GameUI" to="." method="OnGameUIResumeButtonPressed"]
 [connection signal="ReturnToMainMenuPressed" from="GameUI" to="." method="OnGameUIReturnToMainMenuButtonPressed"]

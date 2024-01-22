@@ -9,6 +9,9 @@ public partial class Game : Node2D
 	
 	[Export]
 	private Node2D _walls;
+
+	[Export]
+	private Player _player;
 	
 	[Export]
 	private WallSpawner _wallSpawner;
@@ -26,12 +29,18 @@ public partial class Game : Node2D
 	
 	private int _score;
 
+	/// <summary>
+	/// Get and set if the game is over
+	/// </summary>
 	public bool IsGameOver
 	{
 		get => _isGameOver;
 		set => _isGameOver = value;
 	}
 
+	/// <summary>
+	/// Get and set (and update) score
+	/// </summary>
 	public int Score
 	{
 		get => _score;
@@ -41,26 +50,29 @@ public partial class Game : Node2D
 			_gameUi.UpdateScore(_score);
 		}
 	}
-
-	public void OnWallSpawnerWallSpawned(Wall wall)
-	{
-		_walls.AddChild(wall);
-	}
-
+	
+	/// <summary>
+	/// Enable the wall spawner and hide the "Ready" label when the "Game start" timer is timeout
+	/// </summary>
 	public void OnGameStartTimerTimeout()
 	{
+		_player.ProcessMode = ProcessModeEnum.Inherit;
 		_wallSpawner.ProcessMode = ProcessModeEnum.Inherit;
 		_gameUi.HideGameStartLabel();
 	}
 
-	public void OnPlayerPassed()
+	/// <summary>
+	/// Add a wall when the wall spawner spawn something
+	/// </summary>
+	/// <param name="wall"></param>
+	public void OnWallSpawnerWallSpawned(Wall wall)
 	{
-		if (!IsGameOver)
-		{
-			Score++;
-		}
+		_walls.AddChild(wall);
 	}
 	
+	/// <summary>
+	/// Game is over when the player crashed
+	/// </summary>
 	public void OnPlayerCrashed()
 	{
 		IsGameOver = true;
@@ -69,18 +81,45 @@ public partial class Game : Node2D
 		_gameUi.GameOver();
 	}
 
-	public void Enable()
+	/// <summary>
+	/// Increment score when the player passed through the area between the two blocks of the wall
+	/// </summary>
+	public void OnPlayerPassed()
 	{
-		_gameUi.Visible = true;
-		ProcessMode = ProcessModeEnum.Always;
+		if (!IsGameOver)
+		{
+			Score++;
+		}
 	}
 
+	/// <summary>
+	/// Pause the game when the "Pause" button is pressed
+	/// </summary>
+	public void OnGameUIPauseButtonPressed()
+	{
+		_gameUi.PauseGame();
+	}
+	
+	/// <summary>
+	/// Replay the game when the "Replay" button is pressed
+	/// </summary>
 	public void OnGameUIReplayButtonPressed()
 	{
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToPacked(_gameScene);
 	}
 
+	/// <summary>
+	/// Resume the game when the "Resume" button is pressed
+	/// </summary>
+	public void OnGameUIResumeButtonPressed()
+	{
+		_gameUi.ResumeGame();
+	}
+
+	/// <summary>
+	/// Return to the main menu when the "Return to menu" is pressed
+	/// </summary>
 	public void OnGameUIReturnToMainMenuButtonPressed()
 	{
 		GetTree().Paused = false;

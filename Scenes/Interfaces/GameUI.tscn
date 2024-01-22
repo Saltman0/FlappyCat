@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Interfaces/GameUI.cs" id="1_2soxm"]
 
 [node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel")]
+process_mode = 3
 script = ExtResource("1_2soxm")
 _pauseButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/PauseButton")
 _resumeButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/ResumeButton")

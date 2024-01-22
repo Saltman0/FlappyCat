@@ -15,9 +15,6 @@ public partial class GameUI : CanvasLayer
 	[Signal]
 	public delegate void ReturnToMainMenuPressedEventHandler();
 	
-	[Signal]
-	public delegate void GamePausedEventHandler();
-	
 	[Export]
 	private Button _pauseButton;
 	
@@ -67,33 +64,52 @@ public partial class GameUI : CanvasLayer
 		}
 	}
 
+	/// <summary>
+	/// Emit a signal when the "Pause" button is pressed
+	/// </summary>
 	public void OnPauseButtonPressed()
 	{
 		EmitSignal(SignalName.PauseButtonPressed);
 		PauseGame();
 	}
 
+	/// <summary>
+	/// Emit a signal when the "Resume" button is pressed
+	/// </summary>
 	public void OnResumeButtonPressed()
 	{
 		EmitSignal(SignalName.ResumeButtonPressed);
 		ResumeGame();
 	}
 
+	/// <summary>
+	/// Emit a signal when the "Resume" is pressed
+	/// </summary>
 	public void OnReplayButtonPressed()
 	{
 		EmitSignal(SignalName.ReplayButtonPressed);
 	}
 
+	/// <summary>
+	/// Emit a signal when the "Return to main menu" button is pressed
+	/// </summary>
 	public void OnReturnToMainMenuButtonPressed()
 	{
 		EmitSignal(SignalName.ReturnToMainMenuPressed);
 	}
 
+	/// <summary>
+	/// Update the score
+	/// </summary>
+	/// <param name="score">The score</param>
 	public void UpdateScore(int score)
 	{
 		_scoreLabel.Text = score.ToString();
 	}
 
+	/// <summary>
+	/// Pause the game
+	/// </summary>
 	public void PauseGame()
 	{
 		_pauseButton.Visible = false;
@@ -104,6 +120,9 @@ public partial class GameUI : CanvasLayer
 		GetTree().Paused = true;
 	}
 	
+	/// <summary>
+	/// Resume the game
+	/// </summary>
 	public void ResumeGame()
 	{
 		GetTree().Paused = false;
@@ -114,6 +133,9 @@ public partial class GameUI : CanvasLayer
 		_gameStartLabel.Visible = false;
 	}
 
+	/// <summary>
+	/// Display the "Game over"
+	/// </summary>
 	public void GameOver()
 	{
 		_pauseButton.Visible = false;
@@ -123,6 +145,9 @@ public partial class GameUI : CanvasLayer
 		_gameStartLabel.Visible = false;
 	}
 
+	/// <summary>
+	/// Hide the GameStart label
+	/// </summary>
 	public void HideGameStartLabel()
 	{
 		_gameStartLabel.Visible = false;
