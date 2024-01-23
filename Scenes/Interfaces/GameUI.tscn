@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Interfaces/GameUI.cs" id="1_2soxm"]
 
-[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel")]
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel", "_bestScoreNumber")]
 process_mode = 3
 script = ExtResource("1_2soxm")
 _pauseButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/PauseButton")
@@ -13,6 +13,7 @@ _gameOverAndButtonsContainer = NodePath("GameControl/GameOverAndButtonsContainer
 _gameLabel = NodePath("GameControl/GameOverAndButtonsContainer/GameLabel")
 _gameStartLabel = NodePath("GameControl/GameStartLabel")
 _scoreLabel = NodePath("GameControl/ScoreLabel")
+_bestScoreNumber = NodePath("GameControl/BestScoreContainer/BestScoreNumber")
 
 [node name="GameControl" type="Control" parent="."]
 layout_mode = 3
@@ -22,13 +23,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BestScoreLabel" type="Label" parent="GameControl"]
-layout_mode = 1
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 118.0
-offset_bottom = 43.0
-text = "Best score : 0"
+[node name="BestScoreContainer" type="HBoxContainer" parent="GameControl"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 120.0
+offset_bottom = 52.0
+
+[node name="BestScoreLabel" type="Label" parent="GameControl/BestScoreContainer"]
+layout_mode = 2
+text = "Best score :"
+
+[node name="BestScoreNumber" type="Label" parent="GameControl/BestScoreContainer"]
+layout_mode = 2
+text = "0"
 
 [node name="ScoreLabel" type="Label" parent="GameControl"]
 layout_mode = 1

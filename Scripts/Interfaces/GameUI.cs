@@ -39,6 +39,14 @@ public partial class GameUI : CanvasLayer
 	[Export]
 	private Label _scoreLabel;
 
+	[Export] 
+	private Label _bestScoreNumber;
+
+	public override void _Ready()
+	{
+		UpdateBestScore();
+	}
+
 	public override void _Input(InputEvent @inputEvent)
 	{
 		if (@inputEvent.IsActionPressed("pause"))
@@ -52,6 +60,11 @@ public partial class GameUI : CanvasLayer
 				_pauseButton.EmitSignal("pressed");
 			}
 		}
+	}
+
+	public void UpdateBestScore()
+	{
+		_bestScoreNumber.Text = GetNode<ScoreManager>("/root/ScoreManager").LoadAllScore().GetBestHighScore().ToString();
 	}
 	
 	/// <summary>

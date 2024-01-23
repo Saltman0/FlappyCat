@@ -71,7 +71,7 @@ public partial class Game : Node2D
 	}
 	
 	/// <summary>
-	/// Game is over when the player crashed
+	/// Game is over, save the score and update the best score when the player crashed
 	/// </summary>
 	public void OnPlayerCrashed()
 	{
@@ -79,6 +79,8 @@ public partial class Game : Node2D
 		_gameStartTimer.Stop();
 		_gameOverAudio.Play();
 		_gameUi.GameOver();
+		GetNode<ScoreManager>("/root/ScoreManager").SaveScore(_score);
+		_gameUi.UpdateBestScore();
 	}
 
 	/// <summary>
