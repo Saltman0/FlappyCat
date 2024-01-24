@@ -1,24 +1,23 @@
 using Godot;
-using System;
 
-public partial class SceneTransition : Node
+public partial class SceneTransition : CanvasLayer
 {
     private PackedScene _newScene;
-    public void ChangeScene(PackedScene newScene = null)
+
+    [Export]
+    private AnimationPlayer _animationPlayer;
+
+    public void ChangeScene(PackedScene newScene)
     {
         _newScene = newScene;
-        GetNode<AnimationPlayer>("AnimationPlayer").Play("Fade");
+        _animationPlayer.Play("Fade");
+        /*GetTree().ChangeSceneToPacked(_newScene);*/
+        /*_animationPlayer.PlayBackwards("Fade");*/
     }
     
     public void OnAnimationPlayerAnimationFinished(string animationName)
     {
-        if (animationName == "Fade")
-        {
-            if (_newScene != null)
-            {
-                GetTree().ChangeSceneToPacked(_newScene);
-            }
-            GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("Fade");
-        }
+        GD.Print("Animation finished");
+        GetTree().ChangeSceneToPacked(_newScene);
     }
 }

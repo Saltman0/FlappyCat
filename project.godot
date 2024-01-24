@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SceneTransition="*res://Scenes/SceneTransition.tscn"
 ScoreManager="*res://Scripts/HighScore/ScoreManager.cs"
 
 [display]

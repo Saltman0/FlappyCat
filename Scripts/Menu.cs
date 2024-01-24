@@ -13,7 +13,8 @@ public partial class Menu : Node2D
     /// </summary>
     public void OnMenuInterfacePlayButtonPressed()
     {
-        GetTree().ChangeSceneToPacked(_gameScene);
+        GetNode<SceneTransition>("/root/SceneTransition").ChangeScene(_gameScene);
+        /*GetTree().ChangeSceneToPacked(_gameScene);*/
     }
     
     /// <summary>
