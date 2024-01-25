@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-public partial class Game : Node2D
+public partial class Game : Node
 {
 	private bool _isGameOver;
 	
@@ -125,6 +124,6 @@ public partial class Game : Node2D
 	public void OnGameUIReturnToMainMenuButtonPressed()
 	{
 		GetTree().Paused = false;
-		GetTree().ChangeSceneToPacked(_menuScene);
+		GetNode<SceneTransition>("/root/SceneTransition").ChangeScene(_menuScene);
 	}
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MenuInterface : CanvasLayer
+public partial class MenuInterface : Control
 {
 	[Export] 
 	private Button _playButton;

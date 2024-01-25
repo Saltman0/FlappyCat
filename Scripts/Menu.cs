@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-public partial class Menu : Node2D
+public partial class Menu : Node
 {
     [Export]
     private MenuInterface _menuInterface;
@@ -14,7 +13,6 @@ public partial class Menu : Node2D
     public void OnMenuInterfacePlayButtonPressed()
     {
         GetNode<SceneTransition>("/root/SceneTransition").ChangeScene(_gameScene);
-        /*GetTree().ChangeSceneToPacked(_gameScene);*/
     }
     
     /// <summary>

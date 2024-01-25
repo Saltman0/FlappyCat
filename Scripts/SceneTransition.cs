@@ -10,14 +10,15 @@ public partial class SceneTransition : CanvasLayer
     public void ChangeScene(PackedScene newScene)
     {
         _newScene = newScene;
-        _animationPlayer.Play("Fade");
-        /*GetTree().ChangeSceneToPacked(_newScene);*/
-        /*_animationPlayer.PlayBackwards("Fade");*/
+        _animationPlayer.Play("FadeIn");
     }
     
     public void OnAnimationPlayerAnimationFinished(string animationName)
     {
-        GD.Print("Animation finished");
+        if (animationName == "FadeIn")
+        {
+            _animationPlayer.Play("FadeOut");
+        }
         GetTree().ChangeSceneToPacked(_newScene);
     }
 }

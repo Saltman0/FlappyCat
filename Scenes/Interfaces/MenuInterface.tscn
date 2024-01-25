@@ -2,20 +2,18 @@
 
 [ext_resource type="Script" path="res://Scripts/Interfaces/MenuInterface.cs" id="1_s0f0g"]
 
-[node name="MenuInterface" type="CanvasLayer" node_paths=PackedStringArray("_playButton", "_exitButton")]
-script = ExtResource("1_s0f0g")
-_playButton = NodePath("MenuControl/MenuButtonsContainer/PlayButton")
-_exitButton = NodePath("MenuControl/MenuButtonsContainer/ExitButton")
-
-[node name="MenuControl" type="Control" parent="."]
+[node name="MenuInterface" type="Control" node_paths=PackedStringArray("_playButton", "_exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s0f0g")
+_playButton = NodePath("MenuButtonsContainer/PlayButton")
+_exitButton = NodePath("MenuButtonsContainer/ExitButton")
 
-[node name="GameTitle" type="Label" parent="MenuControl"]
+[node name="GameTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -27,7 +25,7 @@ offset_bottom = 123.0
 grow_horizontal = 2
 text = "Flappy cat"
 
-[node name="MenuButtonsContainer" type="VBoxContainer" parent="MenuControl"]
+[node name="MenuButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,13 +39,13 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="MenuControl/MenuButtonsContainer"]
+[node name="PlayButton" type="Button" parent="MenuButtonsContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="ExitButton" type="Button" parent="MenuControl/MenuButtonsContainer"]
+[node name="ExitButton" type="Button" parent="MenuButtonsContainer"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="MenuControl/MenuButtonsContainer/PlayButton" to="." method="OnPlayButtonPressed"]
-[connection signal="pressed" from="MenuControl/MenuButtonsContainer/ExitButton" to="." method="OnExitButtonPressed"]
+[connection signal="pressed" from="MenuButtonsContainer/PlayButton" to="." method="OnPlayButtonPressed"]
+[connection signal="pressed" from="MenuButtonsContainer/ExitButton" to="." method="OnExitButtonPressed"]

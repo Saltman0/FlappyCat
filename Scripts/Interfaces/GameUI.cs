@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameUI : CanvasLayer
+public partial class GameUI : Control
 {
 	[Signal]
 	public delegate void ResumeButtonPressedEventHandler();

@@ -2,43 +2,41 @@
 
 [ext_resource type="Script" path="res://Scripts/Interfaces/GameUI.cs" id="1_2soxm"]
 
-[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel", "_bestScoreNumber")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("_pauseButton", "_resumeButton", "_replayButton", "_returnToMainMenuButton", "_gameOverAndButtonsContainer", "_gameLabel", "_gameStartLabel", "_scoreLabel", "_bestScoreNumber")]
 process_mode = 3
-script = ExtResource("1_2soxm")
-_pauseButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/PauseButton")
-_resumeButton = NodePath("GameControl/ResumeAndPauseButtonsContainer/ResumeButton")
-_replayButton = NodePath("GameControl/GameOverAndButtonsContainer/ReplayButton")
-_returnToMainMenuButton = NodePath("GameControl/GameOverAndButtonsContainer/ReturnToMainMenuButton")
-_gameOverAndButtonsContainer = NodePath("GameControl/GameOverAndButtonsContainer")
-_gameLabel = NodePath("GameControl/GameOverAndButtonsContainer/GameLabel")
-_gameStartLabel = NodePath("GameControl/GameStartLabel")
-_scoreLabel = NodePath("GameControl/ScoreLabel")
-_bestScoreNumber = NodePath("GameControl/BestScoreContainer/BestScoreNumber")
-
-[node name="GameControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2soxm")
+_pauseButton = NodePath("ResumeAndPauseButtonsContainer/PauseButton")
+_resumeButton = NodePath("ResumeAndPauseButtonsContainer/ResumeButton")
+_replayButton = NodePath("GameOverAndButtonsContainer/ReplayButton")
+_returnToMainMenuButton = NodePath("GameOverAndButtonsContainer/ReturnToMainMenuButton")
+_gameOverAndButtonsContainer = NodePath("GameOverAndButtonsContainer")
+_gameLabel = NodePath("GameOverAndButtonsContainer/GameLabel")
+_gameStartLabel = NodePath("GameStartLabel")
+_scoreLabel = NodePath("ScoreLabel")
+_bestScoreNumber = NodePath("BestScoreContainer/BestScoreNumber")
 
-[node name="BestScoreContainer" type="HBoxContainer" parent="GameControl"]
+[node name="BestScoreContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 12.0
 offset_right = 120.0
 offset_bottom = 52.0
 
-[node name="BestScoreLabel" type="Label" parent="GameControl/BestScoreContainer"]
+[node name="BestScoreLabel" type="Label" parent="BestScoreContainer"]
 layout_mode = 2
 text = "Best score :"
 
-[node name="BestScoreNumber" type="Label" parent="GameControl/BestScoreContainer"]
+[node name="BestScoreNumber" type="Label" parent="BestScoreContainer"]
 layout_mode = 2
 text = "0"
 
-[node name="ScoreLabel" type="Label" parent="GameControl"]
+[node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -51,7 +49,7 @@ grow_horizontal = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="ResumeAndPauseButtonsContainer" type="CenterContainer" parent="GameControl"]
+[node name="ResumeAndPauseButtonsContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -62,18 +60,18 @@ offset_right = -14.0
 offset_bottom = 54.0
 grow_horizontal = 0
 
-[node name="ResumeButton" type="Button" parent="GameControl/ResumeAndPauseButtonsContainer"]
+[node name="ResumeButton" type="Button" parent="ResumeAndPauseButtonsContainer"]
 process_mode = 2
 visible = false
 layout_mode = 2
 text = "Resume
 "
 
-[node name="PauseButton" type="Button" parent="GameControl/ResumeAndPauseButtonsContainer"]
+[node name="PauseButton" type="Button" parent="ResumeAndPauseButtonsContainer"]
 layout_mode = 2
 text = "Pause"
 
-[node name="GameOverAndButtonsContainer" type="VBoxContainer" parent="GameControl"]
+[node name="GameOverAndButtonsContainer" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -88,23 +86,23 @@ offset_bottom = 52.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameLabel" type="Label" parent="GameControl/GameOverAndButtonsContainer"]
+[node name="GameLabel" type="Label" parent="GameOverAndButtonsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="ReplayButton" type="Button" parent="GameControl/GameOverAndButtonsContainer"]
+[node name="ReplayButton" type="Button" parent="GameOverAndButtonsContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Replay"
 
-[node name="ReturnToMainMenuButton" type="Button" parent="GameControl/GameOverAndButtonsContainer"]
+[node name="ReturnToMainMenuButton" type="Button" parent="GameOverAndButtonsContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Return to main menu"
 
-[node name="GameStartLabel" type="Label" parent="GameControl"]
+[node name="GameStartLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,7 +119,7 @@ theme_override_font_sizes/font_size = 30
 text = "Ready... fly !"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="GameControl/ResumeAndPauseButtonsContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
-[connection signal="pressed" from="GameControl/ResumeAndPauseButtonsContainer/PauseButton" to="." method="OnPauseButtonPressed"]
-[connection signal="pressed" from="GameControl/GameOverAndButtonsContainer/ReplayButton" to="." method="OnReplayButtonPressed"]
-[connection signal="pressed" from="GameControl/GameOverAndButtonsContainer/ReturnToMainMenuButton" to="." method="OnReturnToMainMenuButtonPressed"]
+[connection signal="pressed" from="ResumeAndPauseButtonsContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
+[connection signal="pressed" from="ResumeAndPauseButtonsContainer/PauseButton" to="." method="OnPauseButtonPressed"]
+[connection signal="pressed" from="GameOverAndButtonsContainer/ReplayButton" to="." method="OnReplayButtonPressed"]
+[connection signal="pressed" from="GameOverAndButtonsContainer/ReturnToMainMenuButton" to="." method="OnReturnToMainMenuButtonPressed"]

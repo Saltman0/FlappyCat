@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clgv5"]
 size = Vector2(360, 26)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_walls", "_player", "_wallSpawner", "_gameOverAudio", "_gameStartTimer", "_gameUi")]
+[node name="Game" type="Node" node_paths=PackedStringArray("_walls", "_player", "_wallSpawner", "_gameOverAudio", "_gameStartTimer", "_gameUi")]
 process_mode = 1
 script = ExtResource("1_lsvam")
 _walls = NodePath("Walls")
