@@ -130,4 +130,9 @@ public partial class Game : Node
 		GetTree().Paused = false;
 		GetNode<SceneTransition>("/root/SceneTransition").ChangeScene(_menuScene);
 	}
+
+	public void OnGameUIJumpButtonPressed()
+	{
+		_player.Jump();
+	}
 }

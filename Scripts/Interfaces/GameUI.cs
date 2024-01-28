@@ -13,7 +13,10 @@ public partial class GameUI : Control
 	public delegate void ReplayButtonPressedEventHandler();
 	
 	[Signal]
-	public delegate void ReturnToMainMenuPressedEventHandler();
+	public delegate void ReturnToMainMenuButtonPressedEventHandler();
+
+	[Signal]
+	public delegate void JumpButtonPressedEventHandler();
 	
 	[Export]
 	private Button _pauseButton;
@@ -27,6 +30,9 @@ public partial class GameUI : Control
 	[Export]
 	private Button _returnToMainMenuButton;
 
+	[Export]
+	private Button _jumpButton;
+	
 	[Export]
 	private VBoxContainer _gameOverAndButtonsContainer;
 
@@ -153,6 +159,14 @@ public partial class GameUI : Control
 	/// </summary>
 	public void OnReturnToMainMenuButtonPressed()
 	{
-		EmitSignal(SignalName.ReturnToMainMenuPressed);
+		EmitSignal(SignalName.ReturnToMainMenuButtonPressed);
+	}
+
+	/// <summary>
+	/// Emit a signal when the "Jump" button is pressed
+	/// </summary>
+	public void OnJumpButtonPressed()
+	{
+		EmitSignal(SignalName.JumpButtonPressed);
 	}
 }
