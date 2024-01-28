@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/SceneTransition.cs" id="1_26b17"]
 [ext_resource type="AudioStream" uid="uid://bijo6ij16cxlf" path="res://Assets/Audio/Transition.mp3" id="2_hatvf"]
 
-[sub_resource type="Animation" id="Animation_473a4"]
-length = 0.001
-
 [sub_resource type="Animation" id="Animation_auyyy"]
 resource_name = "FadeIn"
 length = 0.5
@@ -52,6 +49,9 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_473a4"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq3ow"]
 _data = {
 "FadeIn": SubResource("Animation_auyyy"),
@@ -79,5 +79,6 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hatvf")
+volume_db = -5.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]

@@ -28,6 +28,9 @@ public partial class Game : Node
 	[Export]
 	private GameUI _gameUi;
 
+	[Export]
+	private DayBackground _dayBackground;
+
 	/// <summary>
 	/// Get and set if the game is over
 	/// </summary>
@@ -57,6 +60,7 @@ public partial class Game : Node
 	{
 		_player.ProcessMode = ProcessModeEnum.Inherit;
 		_wallSpawner.ProcessMode = ProcessModeEnum.Inherit;
+		_dayBackground.ScrollEnabled = true;
 		_gameUi.HideGameStartLabel();
 	}
 
